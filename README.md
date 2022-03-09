@@ -1,6 +1,6 @@
 <p>
   <a href="https://unform.dev">
-    <img src="logo.png" height="200" width="800" alt="AskFlow" />
+    <img src="logo.png" height="100" width="400" alt="AskFlow" />
   </a>
 </p>
 <p>🚀 API Storage with AWS S3</p>
