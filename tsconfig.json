@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2017" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "module": "commonjs" /* Specify what module code is generated. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "baseUrl": "src/"
+  },
+  "include": ["src/**/*.ts"]
+}
