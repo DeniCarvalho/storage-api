@@ -6,7 +6,9 @@ const _handleError = async function (
   res: any,
   _: any
 ) {
-  res.status(error.statusCode()).json(error.jsonResponse());
+  if (error && error.statusCode)
+    res.status(error.statusCode()).json(error.jsonResponse());
+  else res.status(500).send();
   _log(res, req);
 };
 
@@ -27,7 +29,7 @@ const _log = (res: any, req: any) => {
   let method = req.method;
   let url = req.url;
   let status = res.statusCode;
-  let log = `[${formatted_date}] ${method}:${url} ${status}`;
+  let log = `[${formatted_date}] - ${status} - ${method}:${url}`;
   console.log(log);
 };
 export const handleError = _handleError;
