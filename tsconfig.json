@@ -5,8 +5,7 @@
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "allowJs": true,
-    "esModuleInterop": true,
-    "baseUrl": "src/"
+    "esModuleInterop": true
   },
   "include": ["src/**/*.ts"]
 }

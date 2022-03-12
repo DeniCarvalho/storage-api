@@ -47,8 +47,11 @@ const _convert = (output: string, file: any) => {
 export default async (req: any, res: any, next: any) => {
   try {
     const { guid } = req.params;
+    const { path } = req.body;
     const file = req.file;
-    const output = `tmp/videos/${guid}/video.mp4`;
+
+    const dir = !path ? `tmp/videos/${guid}` : `tmp/videos/${guid}/${path}`;
+    const output = `${dir}/video.mp4`;
     await _convert(output, file);
     next();
   } catch (error) {

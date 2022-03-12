@@ -3,7 +3,7 @@
     <img src="logo.png" height="100" width="400" alt="AskFlow" />
   </a>
 </p>
-<p>🚀 API Storage with AWS S3</p>
+<p>🚀 API Storage of AskFlow.io</p>
 <img src="https://img.shields.io/static/v1?label=Version&message=1.0.0&color=286291&style=for-the-badge"/>
 
 Guia rápido
