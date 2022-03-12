@@ -1,4 +1,4 @@
-import { IObject, IStorageProvider } from "../../data/sources/provider";
+import { IObject, IStorageProvider } from "../../core/providers";
 
 export class UploadVideoUsecase {
   constructor(private storageProvider: IStorageProvider) {}

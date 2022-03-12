@@ -1,8 +1,8 @@
 import express from "express";
 import * as fs from "fs";
 
-import { handle404 } from "./helpers/handle404";
-import { handleError } from "./helpers/handleError";
+import { handle404 } from "./core/helpers/handle404";
+import { handleError } from "./core/helpers/handleError";
 import { router } from "./routes";
 
 const app = express();

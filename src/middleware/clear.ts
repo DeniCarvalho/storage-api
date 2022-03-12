@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { promises as Fs } from "fs";
-import { RequestError } from "../errors/requestError";
+import { RequestError } from "../core/errors/requestError";
 
 const recursive = async (dir: string) => {
   fs.readdirSync(dir).forEach(async (f) => {

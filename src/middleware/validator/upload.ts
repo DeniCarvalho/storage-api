@@ -1,4 +1,4 @@
-import { RequestError } from "../../errors/requestError";
+import { RequestError } from "../../core/errors/requestError";
 import * as fs from "fs";
 import { promises as Fs } from "fs";
 

@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { RequestError } from "../../errors/requestError";
+import { RequestError } from "../../core/errors/requestError";
 
 var spawn = require("child_process").spawn;
 
