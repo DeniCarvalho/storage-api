@@ -13,7 +13,7 @@ router.post(
   tempVideo,
   validator,
   convertToMP4,
-  createThumbnail,
+  // createThumbnail,
   (req: Request, res: Response) => {
     return uploadController.handle(req, res);
   }
