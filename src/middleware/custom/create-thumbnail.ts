@@ -40,9 +40,8 @@ const _create = (output: string, file: string) => {
 export default async (req: any, res: any, next: any) => {
   try {
     const { guid } = req.params;
-    const { path } = req.body;
-    const dir = !path ? `tmp/videos/${guid}` : `tmp/videos/${guid}/${path}`;
-    const file = `${dir}/video.mp4`;
+    const dir = `tmp/videos/${guid}`;
+    const file = `${dir}/output${process.env.OUTPUT_EXTENSION}`;
     const output = `${dir}/thumbnail.jpg`;
     await _create(output, file);
     next();

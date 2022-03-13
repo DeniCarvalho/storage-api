@@ -12,5 +12,6 @@ export interface IObjectGet {
 export interface IStorageProvider {
   upload(object: IObject): Promise<void>;
   get(object: IObjectGet): Promise<string>;
+  getAll(object: IObjectGet): Promise<any>;
   delete(object: IObjectGet): Promise<void>;
 }

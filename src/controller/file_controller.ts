@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import * as fs from "fs";
 import {
   GetVideoUsecase,
+  GetAllVideoUsecase,
   UploadVideoUsecase,
   DeleteVideoUsecase,
 } from "../domain";
@@ -12,18 +13,15 @@ export class FileController {
   constructor(
     private uploadVideoUsecase: UploadVideoUsecase,
     private getVideoUsecase: GetVideoUsecase,
+    private getAllVideoUsecase: GetAllVideoUsecase,
     private deleteVideoUsecase: DeleteVideoUsecase
   ) {}
 
   async upload(request: Request, response: Response): Promise<Response> {
     const { guid } = request.params;
-    const { bucket, path } = request.body;
+    const { bucket, key } = request.body;
 
-    const fileDir = !path
-      ? `tmp/videos/${guid}/video.mp4`
-      : `tmp/videos/${guid}/${path}/video.mp4`;
-
-    const key = path ? `${guid}/${path}/video.mp4` : `${guid}/video.mp4`;
+    const fileDir = `tmp/videos/${guid}/output${process.env.OUTPUT_EXTENSION}`;
 
     if (!fs.existsSync(fileDir)) {
       throw new RequestError("Local file not exist", 400);
@@ -31,7 +29,7 @@ export class FileController {
     const fileContent = fs.readFileSync(fileDir);
     await this.uploadVideoUsecase.execute({
       bucket: bucket,
-      key: key,
+      key: `${key}${process.env.OUTPUT_EXTENSION}`,
       fileContent,
     });
     clear.recursive(`tmp/videos/${guid}`);
@@ -39,10 +37,7 @@ export class FileController {
   }
 
   async get(request: Request, response: Response): Promise<Response> {
-    const { guid } = request.params;
-    const { bucket, path } = request.body;
-    const key = !path ? `${guid}/video.mp4` : `${guid}/${path}/video.mp4`;
-
+    const { bucket, key } = request.body;
     const data = await this.getVideoUsecase.execute({
       bucket: bucket,
       key: key,
@@ -50,10 +45,18 @@ export class FileController {
     return response.status(200).send(data);
   }
 
+  async getAll(request: Request, response: Response): Promise<Response> {
+    const { bucket, key } = request.body;
+
+    const data = await this.getAllVideoUsecase.execute({
+      bucket: bucket,
+      key: key,
+    });
+    return response.status(200).send(data);
+  }
+
   async delete(request: Request, response: Response): Promise<Response> {
-    const { guid } = request.params;
-    const { bucket, path } = request.body;
-    const key = !path ? `${guid}/video.mp4` : `${guid}/${path}/video.mp4`;
+    const { bucket, key } = request.body;
 
     await this.deleteVideoUsecase.execute({
       bucket: bucket,

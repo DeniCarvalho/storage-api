@@ -32,10 +32,23 @@ export class S3Provider implements IStorageProvider {
     try {
       const params = {
         Bucket: object.bucket,
-        Key: object.key,
+        Key: `${object.key}${process.env.OUTPUT_EXTENSION}`,
       };
       const url = await this._s3.getSignedUrlPromise("getObject", params);
       return url;
+    } catch (error) {
+      throw new RequestError(error);
+    }
+  }
+
+  async getAll(object: IObject): Promise<any> {
+    try {
+      const params = {
+        Bucket: object.bucket,
+        Prefix: object.key,
+      };
+      const data = await this._s3.listObjects(params).promise();
+      return data;
     } catch (error) {
       throw new RequestError(error);
     }
@@ -45,7 +58,7 @@ export class S3Provider implements IStorageProvider {
     try {
       const params = {
         Bucket: object.bucket,
-        Key: object.key,
+        Key: `${object.key}${process.env.OUTPUT_EXTENSION}`,
       };
       await this._s3.deleteObject(params).promise();
     } catch (error) {

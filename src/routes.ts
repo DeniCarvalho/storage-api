@@ -19,12 +19,17 @@ router.post(
 );
 
 // Get video
-router.get("/videos/:guid", getValidator, (req: Request, res: Response) => {
+router.get("/videos", getValidator, (req: Request, res: Response) => {
   return fileController.get(req, res);
 });
 
+// Get all video
+router.get("/videos/all", getValidator, (req: Request, res: Response) => {
+  return fileController.getAll(req, res);
+});
+
 // Delete video
-router.delete("/videos/:guid", getValidator, (req: Request, res: Response) => {
+router.delete("/videos", getValidator, (req: Request, res: Response) => {
   return fileController.delete(req, res);
 });
 

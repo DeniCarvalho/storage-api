@@ -1,10 +1,9 @@
 import { RequestError } from "../../core/errors/requestError";
 import * as fs from "fs";
-import { promises as Fs } from "fs";
 
 export default async (req: any, res: any, next: any) => {
   const { guid } = req.params;
-  const { bucket, path } = req.body;
+  const { bucket, key } = req.body;
   if (!guid) {
     return next(new RequestError("Guid is required"));
   }
@@ -15,8 +14,12 @@ export default async (req: any, res: any, next: any) => {
     return next(new RequestError("Bucket is required"));
   }
 
-  if (path) {
-    let tempDir = path.trim().toLowerCase();
+  if (!key) {
+    return next(new RequestError("Key is required"));
+  }
+
+  if (key) {
+    let tempDir = key.trim().toLowerCase();
     const firstChar = tempDir.charAt(0);
     if (firstChar == "/") {
       tempDir = tempDir.substring(1);
@@ -37,7 +40,7 @@ export default async (req: any, res: any, next: any) => {
         break;
       }
     }
-    if (!isValid) return next(new RequestError("Invalid Path"));
+    if (!isValid) return next(new RequestError("Invalid Key"));
   }
   next();
 };
