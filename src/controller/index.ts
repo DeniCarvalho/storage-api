@@ -1,1 +1,1 @@
-export * from "./upload_controller";
+export * from "./file_controller";

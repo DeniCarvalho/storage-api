@@ -27,4 +27,29 @@ export class S3Provider implements IStorageProvider {
       throw new RequestError(error);
     }
   }
+
+  async get(object: IObject): Promise<string> {
+    try {
+      const params = {
+        Bucket: object.bucket,
+        Key: object.key,
+      };
+      const url = await this._s3.getSignedUrlPromise("getObject", params);
+      return url;
+    } catch (error) {
+      throw new RequestError(error);
+    }
+  }
+
+  async delete(object: IObject): Promise<void> {
+    try {
+      const params = {
+        Bucket: object.bucket,
+        Key: object.key,
+      };
+      await this._s3.deleteObject(params).promise();
+    } catch (error) {
+      throw new RequestError(error);
+    }
+  }
 }
