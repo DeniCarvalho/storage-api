@@ -10,7 +10,7 @@ const _convert = (output: string, file: any) => {
         return reject(new RequestError("Temp folder not exist"));
       }
 
-      var args = [
+      var argsPlus = [
         "-f",
         "mp4",
         "-c:v",
@@ -27,6 +27,13 @@ const _convert = (output: string, file: any) => {
         "faster", // veryfast | faster | fast | medium | slow | slower | veryslow
         "-af",
         "arnndn=m=assets/bd.rnnn:mix=0.9,loudnorm=I=-16:LRA=11:TP=-1.5",
+      ];
+
+      var args = [
+        "-f",
+        "mp4",
+        "-preset",
+        "veryfast", // veryfast | faster | fast | medium | slow | slower | veryslow
       ];
 
       ffmpeg(file.path)

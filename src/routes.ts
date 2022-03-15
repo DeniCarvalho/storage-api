@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 import tempVideo from "./middleware/temp/video";
 import convertToMP4 from "./middleware/custom/convert-to-mp4";
-import updateValidator from "./middleware/validator/upload";
+import uploadValidator from "./middleware/validator/upload";
 import getValidator from "./middleware/validator/get";
 import { fileController } from ".";
 const router = Router();
@@ -10,7 +10,7 @@ const router = Router();
 router.post(
   "/videos/:guid",
   tempVideo,
-  updateValidator,
+  uploadValidator,
   convertToMP4,
   // createThumbnail,
   (req: Request, res: Response) => {
