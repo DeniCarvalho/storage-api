@@ -1,4 +1,4 @@
-import { RequestError } from "../../core/errors/requestError";
+import { RequestError } from "af-utils-node";
 import * as fs from "fs";
 
 export default async (req: any, res: any, next: any) => {

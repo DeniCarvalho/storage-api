@@ -1,4 +1,4 @@
-import { RequestError } from "../../core/errors/requestError";
+import { RequestError } from "af-utils-node";
 
 export default async (req: any, res: any, next: any) => {
   const { bucket, key } = req.body;

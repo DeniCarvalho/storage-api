@@ -1,6 +1,6 @@
 import multer from "multer";
 import * as fs from "fs";
-import { RequestError } from "../../core/errors/requestError";
+import { RequestError } from "af-utils-node";
 import clear from "../clear";
 
 import mime from "mime";

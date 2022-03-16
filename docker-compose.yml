@@ -6,6 +6,22 @@ services: ## Define um serviço
     command: yarn dev ## comando a executar
     ports:
       - "3000:3000" ## redirecionamento de porta quando chegar alguma requisição na porta 3000 chama o container na porta 3000
-      - "9229:9229"
+      - "9228:9228"
     volumes:
       - .:/home/app ## monitoro a pasta atual . e envio as alterações para /usr/app
+    # env_file: .env
+    # depends_on:
+    #   - db
+  
+#   db:
+#     image: postgres:14.2
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: pass
+#       POSTGRES_DB: postgres
+#     ports:
+#       - 5432:5432
+#     volumes:
+#       - db-data:/var/lib/postgresql/data
+# volumes:
+#   db-data:

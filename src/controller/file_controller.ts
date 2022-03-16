@@ -6,7 +6,7 @@ import {
   UploadVideoUsecase,
   DeleteVideoUsecase,
 } from "../domain";
-import { RequestError } from "../core/errors/requestError";
+import { RequestError } from "af-utils-node";
 import clear from "../middleware/clear";
 
 export class FileController {

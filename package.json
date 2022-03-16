@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "start": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts",
-    "dev": "tsnd --inspect=0.0.0.0:9229 --transpile-only --respawn --ignore-watch node_modules src/server.ts"
+    "dev": "tsnd --inspect=0.0.0.0:9228 --transpile-only --respawn --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
     "@aws-sdk/types": "^3.54.0",
     "@types/fluent-ffmpeg": "^2.1.20",
     "@types/mime-types": "^2.1.1",
     "@types/multer": "^1.4.7",
+    "af-utils-node": "^1.0.2",
     "aws-sdk": "^2.1090.0",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.3",

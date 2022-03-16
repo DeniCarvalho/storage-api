@@ -1,7 +1,7 @@
 import ffmpeg from "fluent-ffmpeg";
 
 import * as fs from "fs";
-import { RequestError } from "../../core/errors/requestError";
+import { RequestError } from "af-utils-node";
 
 const _convert = (output: string, file: any) => {
   return new Promise((resolve: any, reject: any) => {
