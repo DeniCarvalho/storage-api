@@ -2,7 +2,6 @@ import { IStorageProvider, IObject } from "../storage_provider";
 import S3 from "aws-sdk/clients/s3";
 
 import { RequestError } from "af-utils-node";
-require("dotenv-safe").config();
 
 export class S3Provider implements IStorageProvider {
   private _s3: S3;
