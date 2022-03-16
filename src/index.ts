@@ -1,3 +1,4 @@
+require("dotenv-safe").config();
 import { FileController } from "./controller";
 import { S3Provider } from "./data";
 import {

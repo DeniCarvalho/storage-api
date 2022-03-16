@@ -4,8 +4,6 @@ import * as fs from "fs";
 import { handle404, handleError } from "af-utils-node";
 import { router } from "./routes";
 
-require("dotenv-safe").config();
-
 const app = express();
 
 if (!fs.existsSync("tmp")) {

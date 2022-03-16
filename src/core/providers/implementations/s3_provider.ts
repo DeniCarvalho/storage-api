@@ -14,6 +14,7 @@ export class S3Provider implements IStorageProvider {
       },
     });
   }
+
   async upload(object: IObject): Promise<void> {
     try {
       const params = {
