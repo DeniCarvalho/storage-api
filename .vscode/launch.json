@@ -7,7 +7,7 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "Launch API",
+      "name": "Launch Local API",
       "skipFiles": ["<node_internals>/**"],
       "runtimeExecutable": "yarn",
       "runtimeArgs": ["start"],
@@ -17,6 +17,17 @@
         "${workspaceFolder}/**",
         "!**/node_modules/**" // this lines prevent reading source maps from node_modules
       ]
+    },
+    {
+      "name": "Docker: Attach to API",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/home/app",
+      "protocol": "inspector",
+      "restart": true
     }
   ]
 }

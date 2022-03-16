@@ -1,3 +1,3 @@
 import { app } from "./app";
-const port = process.env.PORT || process.env.API_PORT;
+const port: number = parseInt(process.env.PORT || process.env.API_PORT);
 app.listen(port);
